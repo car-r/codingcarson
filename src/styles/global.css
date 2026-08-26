@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-body: "Source Serif 4", "Georgia", serif;
+  --color-paper: #f6f1e8;
+  --color-ink: #1a1714;
+  --color-rust: #b5442a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-optical-sizing: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rust);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 50;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.hairline {
+  border-color: color-mix(in srgb, var(--color-ink) 18%, transparent);
+}

@@ -1,0 +1,81 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FeaturedCard from "../components/FeaturedCard.astro";
+import ExperimentCard from "../components/ExperimentCard.astro";
+import { featured, experiments } from "../data/projects";
+---
+
+<Base
+  title="Carson Richter · codingcarson.com"
+  description="Coding portfolio of Carson Richter. Shipped web projects."
+>
+  <div class="flex min-h-screen flex-col">
+    <Header />
+
+    <main id="main">
+      <section
+        class="mx-auto max-w-6xl px-5 pb-16 pt-16 sm:px-8 sm:pb-24 sm:pt-24 lg:px-12 lg:pt-28"
+        aria-labelledby="intro-heading"
+      >
+        <p class="text-[0.7rem] uppercase tracking-[0.22em] text-ink/55">
+          codingcarson.com
+        </p>
+        <h1
+          id="intro-heading"
+          class="mt-5 max-w-[14ch] font-display text-[2.6rem] font-semibold leading-[1.08] tracking-tight sm:text-6xl lg:text-[4.5rem]"
+        >
+          Carson Richter
+        </h1>
+        <p class="mt-6 max-w-xl font-display text-2xl italic leading-snug text-ink/85 sm:text-3xl">
+          builds and ships web projects.
+        </p>
+        <div class="mt-10 h-px w-16 bg-rust" aria-hidden="true"></div>
+      </section>
+
+      <section
+        class="mx-auto max-w-6xl px-5 pb-8 sm:px-8 lg:px-12"
+        aria-labelledby="featured-heading"
+      >
+        <div class="flex items-end justify-between gap-4 border-b hairline pb-4">
+          <h2
+            id="featured-heading"
+            class="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+          >
+            Featured work
+          </h2>
+          <p class="hidden text-[0.7rem] uppercase tracking-[0.18em] text-ink/50 sm:block">
+            Selected
+          </p>
+        </div>
+        <div>
+          {featured.map((project, index) => (
+            <FeaturedCard project={project} index={index} />
+          ))}
+        </div>
+      </section>
+
+      <section
+        class="mx-auto max-w-6xl px-5 pb-20 pt-6 sm:px-8 sm:pb-28 lg:px-12"
+        aria-labelledby="experiments-heading"
+      >
+        <div class="flex items-end justify-between gap-4 border-b hairline pb-4">
+          <h2
+            id="experiments-heading"
+            class="font-display text-2xl font-semibold tracking-tight sm:text-3xl"
+          >
+            Experiments
+          </h2>
+        </div>
+        <div class="grid sm:grid-cols-2 sm:gap-x-12">
+          {experiments.map((project) => (
+            <ExperimentCard project={project} />
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+</Base>

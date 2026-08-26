@@ -1,0 +1,35 @@
+---
+import type { Experiment } from "../data/projects";
+
+interface Props {
+  project: Experiment;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="border-b hairline py-8">
+  <h3 class="font-display text-xl font-semibold tracking-tight">
+    {project.name}
+  </h3>
+  <p class="mt-2 max-w-prose leading-relaxed text-ink/80">
+    {project.pitch}
+  </p>
+  <ul class="mt-4 flex flex-wrap gap-2" aria-label="Stack">
+    {
+      project.stack.map((item) => (
+        <li class="border hairline px-2 py-0.5 text-[0.7rem] uppercase tracking-[0.14em] text-ink/75">
+          {item}
+        </li>
+      ))
+    }
+  </ul>
+  <p class="mt-4 text-sm">
+    <a
+      href={project.repo}
+      class="text-ink underline decoration-ink/25 underline-offset-4 hover:text-rust hover:decoration-rust"
+    >
+      GitHub
+    </a>
+  </p>
+</article>

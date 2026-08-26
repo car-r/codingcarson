@@ -1,0 +1,57 @@
+---
+import type { FeaturedProject } from "../data/projects";
+
+interface Props {
+  project: FeaturedProject;
+  index: number;
+}
+
+const { project, index } = Astro.props;
+const n = String(index + 1).padStart(2, "0");
+---
+
+<article class="border-b hairline py-10 sm:py-14">
+  <div class="grid gap-4 sm:grid-cols-[4.5rem_minmax(0,1fr)] sm:gap-8 lg:grid-cols-[5.5rem_minmax(0,1fr)_minmax(0,1.1fr)] lg:items-start lg:gap-12">
+    <p
+      class="font-display text-sm tabular-nums tracking-[0.18em] text-rust"
+      aria-hidden="true"
+    >
+      {n}
+    </p>
+
+    <div>
+      <h3 class="font-display text-[1.65rem] font-semibold leading-tight tracking-tight sm:text-3xl">
+        {project.name}
+      </h3>
+      <ul class="mt-4 flex flex-wrap gap-2" aria-label="Stack">
+        {
+          project.stack.map((item) => (
+            <li class="border hairline px-2 py-0.5 text-[0.7rem] uppercase tracking-[0.14em] text-ink/75">
+              {item}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="sm:col-start-2 lg:col-start-3">
+      <p class="max-w-prose text-lg leading-relaxed text-ink/85">
+        {project.pitch}
+      </p>
+      <p class="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        <a
+          href={project.live}
+          class="text-rust underline decoration-rust/40 underline-offset-4 hover:decoration-rust"
+        >
+          Live
+        </a>
+        <a
+          href={project.repo}
+          class="text-ink underline decoration-ink/25 underline-offset-4 hover:text-rust hover:decoration-rust"
+        >
+          GitHub
+        </a>
+      </p>
+    </div>
+  </div>
+</article>
